@@ -2,7 +2,7 @@
 
 namespace Wormhole\behaviors;
 
-use Wormhole\lib\behaviors\IClientInspector.php';
+use Wormhole\lib\behaviors\IClientInspector;
 
 class ClientAuthInspector implements IClientInspector
 {
