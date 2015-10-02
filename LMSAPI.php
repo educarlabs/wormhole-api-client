@@ -4,9 +4,9 @@ namespace Wormhole;
 
 use Wormhole\behaviors\ClientAuthInspector;
 use Wormhole\lib\behaviors\BehaviorManager;
-use Wormhole\lib\pest\Pest;
-use Wormhole\lib\pest\PestXML;
-use Wormhole\lib\pest\PestJSON;
+use Pest;
+use PestXML;
+use PestJSON;
 
 class LMSAPI
 {
@@ -42,11 +42,13 @@ class LMSAPI
 		$this->behaviorManager = $this->createBehaviorManager();
 	}
 	
-	public function getSecretKey() {
+	public function getSecretKey() 
+	{
 		return $this->apiSecretKey;
 	}
 	
-	public function getAccessKey() {
+	public function getAccessKey() 
+	{
 		return $this->apiAccessKey;
 	}
   
@@ -89,7 +91,8 @@ class LMSAPI
 			echo ("*DEBUG* " . $title . ": " . $value . "<br/>");
 	}
 	
-	private function createRestClient() {
+	private function createRestClient() 
+	{
 		switch($this->replyFormat) {
 			case LMSAPI_ReplyFormat::XML:
 				return new PestXML($this->url);
@@ -102,12 +105,13 @@ class LMSAPI
 		}
 	}
 	
-	private function createBehaviorManager() {
+	private function createBehaviorManager() 
+	{
 		$inspectors = array();
 		
-		foreach(explode(",", Config::INSPECTORS_DEFAULT) as $inspectorImp)
-			$inspectors[] = new $inspectorImp();
-			
-		return new BehaviorManager($inspectors);
+		$inspectors[] = new ClientAuthInspector();
+		$response 	  = new BehaviorManager($inspectors)
+
+		return $response;
 	}
 }

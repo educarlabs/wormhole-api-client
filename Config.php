@@ -11,5 +11,4 @@ abstract class Config
 	
 	const LANGUAGE_DEFAULT 		= LMSAPI_Language::EN_US;
 	const REPLYFORMAT_DEFAULT 	= LMSAPI_ReplyFormat::JSON;
-	const INSPECTORS_DEFAULT 	= "ClientAuthInspector"; // Comma-separated list of IClientInspector implementations
 }
