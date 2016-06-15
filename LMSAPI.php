@@ -110,7 +110,7 @@ class LMSAPI
 		$inspectors = array();
 		
 		$inspectors[] = new ClientAuthInspector();
-		$response 	  = new BehaviorManager($inspectors)
+		$response     = new BehaviorManager($inspectors);
 
 		return $response;
 	}
